@@ -9,9 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     let networking = Networking.instance
-    var flickrItems = [FlickrImage]()
+    var flickrItems = [FlickrImage]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,8 @@ class ViewController: UIViewController {
             
             for photo in photosArr {
                 
+                let flickr = FlickrImage(photoObj: photo)
+                self.flickrItems.append(flickr)
             }
         }
     }
@@ -39,3 +47,22 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath) as? FlickImageCell else { return UICollectionViewCell()}
+        
+        
+        return cell
+        
+    }
+    
+    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    
+}
