@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     let networking = Networking.instance
     var flickrItems = [FlickrImage]()
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,15 @@ class ViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.estimatedItemSize = CGSize(width: view.bounds.size.width - (view.bounds.size.width*0.1), height: 300)
+//        }
+        
+        activityIndicator.frame = view.bounds
+        activityIndicator.color = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
         
         networking.fetch(route: .me) { (data) in
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
@@ -33,10 +43,10 @@ class ViewController: UIViewController {
                 for photo in photosArr {
                     let flickr = FlickrImage(photoObj: photo)
                     self.flickrItems.append(flickr)
-                    
                 }
                 
                 self.collectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
             
         }
@@ -50,6 +60,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "flickrImageDetail" {
             if let destinationVC = segue.destination as? DetailVC{
+                destinationVC.transitioningDelegate = self
                 if let image = sender as? FlickrImage {
                     destinationVC.imageUrl = image.imgUrl!
                 }
@@ -59,7 +70,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UICollectionViewDataSource{
+extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return flickrItems.count
     }
@@ -78,10 +89,29 @@ extension ViewController: UICollectionViewDataSource{
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let image = flickrItems[indexPath.row]
         
         performSegue(withIdentifier: "flickrImageDetail", sender: image)
     }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController)
+        -> UIViewControllerAnimatedTransitioning? {
+        return CustomAnimationController()
+    }
+    
+    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return CustomDismissAnimationController()
+//    }
 }

@@ -11,6 +11,9 @@ import UIKit
 class DetailVC: UIViewController {
 
     @IBOutlet weak var flickrDetailImageView: CustomImageView!
+    @IBOutlet weak var authorImageView: UIImageView!
+    @IBOutlet weak var authorNameLabel: UILabel!
+    @IBOutlet weak var photoTitleLabel: UILabel!
     var imageUrl: String?
     
     override func viewDidLoad() {
@@ -27,7 +30,11 @@ class DetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func dismissDetailPressed(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
