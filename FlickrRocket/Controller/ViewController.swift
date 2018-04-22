@@ -47,6 +47,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "flickrImageDetail" {
+            if let destinationVC = segue.destination as? DetailVC{
+                if let image = sender as? FlickrImage {
+                    destinationVC.imageUrl = image.imgUrl!
+                }
+            }
+        }
+    }
 
 }
 
@@ -70,5 +79,9 @@ extension ViewController: UICollectionViewDataSource{
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = flickrItems[indexPath.row]
+        
+        performSegue(withIdentifier: "flickrImageDetail", sender: image)
+    }
 }

@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="158"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jK3-Ky-aXN" customClass="CustomImageView" customModule="FlickrRocket" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jK3-Ky-aXN" customClass="CustomImageView" customModule="FlickrRocket" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="162" height="142"/>
                                                 </imageView>
                                             </subviews>
@@ -65,11 +65,41 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="zlr-SE-51U" id="ZEU-Ea-tIY"/>
+                        <segue destination="3Hr-Pz-G7K" kind="showDetail" identifier="flickrImageDetail" id="6Q5-jM-973"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+        <!--DetailVC-->
+        <scene sceneID="29l-gr-usF">
+            <objects>
+                <viewController id="3Hr-Pz-G7K" customClass="DetailVC" customModule="FlickrRocket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AXj-DA-tFv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kTx-4X-6Iv" customClass="CustomImageView" customModule="FlickrRocket" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A1k-zG-9bG" firstAttribute="trailing" secondItem="kTx-4X-6Iv" secondAttribute="trailing" id="Dca-BK-9tH"/>
+                            <constraint firstItem="kTx-4X-6Iv" firstAttribute="top" secondItem="A1k-zG-9bG" secondAttribute="top" id="G7W-Og-ADT"/>
+                            <constraint firstItem="A1k-zG-9bG" firstAttribute="bottom" secondItem="kTx-4X-6Iv" secondAttribute="bottom" id="fX6-Cp-R3k"/>
+                            <constraint firstItem="kTx-4X-6Iv" firstAttribute="leading" secondItem="A1k-zG-9bG" secondAttribute="leading" id="tip-gr-85h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A1k-zG-9bG"/>
+                    </view>
+                    <connections>
+                        <outlet property="flickrDetailImageView" destination="kTx-4X-6Iv" id="YEV-Jb-Nzr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0n-4g-HX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="124"/>
         </scene>
     </scenes>
 </document>
