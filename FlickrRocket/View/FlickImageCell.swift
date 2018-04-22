@@ -10,9 +10,16 @@ import UIKit
 
 class FlickImageCell: UICollectionViewCell {
 
+    @IBOutlet weak var flickrImageView: CustomImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func configureCell(forFlickrImage image: FlickrImage) {
+        guard let url = image.imgUrl else {return}
+        
+        flickrImageView.loadImageFromUrlString(urlString: url)
     }
 
 }

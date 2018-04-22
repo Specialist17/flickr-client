@@ -29,14 +29,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dd1-p5-5Hm" customClass="FlickImageCell" customModule="FlickrRocket" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="Dd1-p5-5Hm" customClass="FlickImageCell" customModule="FlickrRocket" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="178" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="178" height="158"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jK3-Ky-aXN">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jK3-Ky-aXN" customClass="CustomImageView" customModule="FlickrRocket" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="162" height="142"/>
                                                 </imageView>
                                             </subviews>
@@ -47,6 +47,9 @@
                                             <constraint firstItem="jK3-Ky-aXN" firstAttribute="leading" secondItem="Dd1-p5-5Hm" secondAttribute="leadingMargin" id="eVt-Qd-kdg"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="jK3-Ky-aXN" secondAttribute="trailing" id="iah-kt-PcJ"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="flickrImageView" destination="jK3-Ky-aXN" id="R0Z-SO-btX"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

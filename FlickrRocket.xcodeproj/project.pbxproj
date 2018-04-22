@@ -15,6 +15,7 @@
 		901892C8208B9E6E0016F77B /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892C7208B9E6E0016F77B /* FlickrImage.swift */; };
 		901892CA208B9E880016F77B /* FlickImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892C9208B9E880016F77B /* FlickImageCell.swift */; };
 		901892CD208B9EAF0016F77B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892CC208B9EAF0016F77B /* Networking.swift */; };
+		901892D4208C27ED0016F77B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892D3208C27ED0016F77B /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		901892C7208B9E6E0016F77B /* FlickrImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		901892C9208B9E880016F77B /* FlickImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickImageCell.swift; sourceTree = "<group>"; };
 		901892CC208B9EAF0016F77B /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		901892D3208C27ED0016F77B /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,7 @@
 		901892B1208B9BC80016F77B /* FlickrRocket */ = {
 			isa = PBXGroup;
 			children = (
-				901892CB208B9E9C0016F77B /* Networking */,
+				901892CB208B9E9C0016F77B /* Supporting */,
 				901892C6208B9E1B0016F77B /* Controller */,
 				901892C5208B9DE80016F77B /* View */,
 				901892C4208B9DE20016F77B /* Model */,
@@ -97,12 +99,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		901892CB208B9E9C0016F77B /* Networking */ = {
+		901892CB208B9E9C0016F77B /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
 				901892CC208B9EAF0016F77B /* Networking.swift */,
+				901892D3208C27ED0016F77B /* CustomImageView.swift */,
 			);
-			path = Networking;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +182,7 @@
 				901892B5208B9BC80016F77B /* ViewController.swift in Sources */,
 				901892CD208B9EAF0016F77B /* Networking.swift in Sources */,
 				901892B3208B9BC80016F77B /* AppDelegate.swift in Sources */,
+				901892D4208C27ED0016F77B /* CustomImageView.swift in Sources */,
 				901892C8208B9E6E0016F77B /* FlickrImage.swift in Sources */,
 				901892CA208B9E880016F77B /* FlickImageCell.swift in Sources */,
 			);

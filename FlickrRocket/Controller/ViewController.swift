@@ -13,15 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let networking = Networking.instance
-    var flickrItems = [FlickrImage]() {
-        didSet {
-            self.collectionView.reloadData()
-        }
-    }
+    var flickrItems = [FlickrImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         networking.fetch(route: .me) { (data) in
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
             
@@ -29,13 +29,16 @@ class ViewController: UIViewController {
                 let photos = flickrJson["photos"] as? [String: Any],
                 let photosArr = photos["photo"] as? [[String:Any]] else {return}
             
-            print(photosArr)
-            
-            for photo in photosArr {
+            DispatchQueue.main.async {
+                for photo in photosArr {
+                    let flickr = FlickrImage(photoObj: photo)
+                    self.flickrItems.append(flickr)
+                    
+                }
                 
-                let flickr = FlickrImage(photoObj: photo)
-                self.flickrItems.append(flickr)
+                self.collectionView.reloadData()
             }
+            
         }
     }
 
@@ -49,18 +52,21 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return flickrItems.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrCell", for: indexPath) as? FlickImageCell else { return UICollectionViewCell()}
         
+        let image = flickrItems[indexPath.row]
+        cell.configureCell(forFlickrImage: image)
         
         return cell
-        
     }
-    
-    
 }
 
 extension ViewController: UICollectionViewDelegate {

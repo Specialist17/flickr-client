@@ -10,31 +10,29 @@ import Foundation
 
 
 struct FlickrImage {
-    var farm: String
+    var farm: Int
     var id: String
     var owner: String
     var secret: String
     var server: String
     var title: String
-    var imgUrl: String {
-        // https://farm9.static.flickr.com/8111/8658536632_afab53f070.jpg
-        return "https://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret).jpg"
-    }
+    var imgUrl: String?
     
     init(photoObj: [String:Any]) {
-        guard let farm = photoObj["farm"] as? String,
+        guard let farm = photoObj["farm"] as? Int,
             let id = photoObj["id"] as? String,
             let owner = photoObj["owner"] as? String,
             let secret = photoObj["secret"] as? String,
             let server = photoObj["server"] as? String,
             let title = photoObj["title"] as? String
             else {
-                self.farm = ""
+                self.farm = 9
                 self.id = ""
                 self.owner = ""
                 self.secret = ""
                 self.server = ""
                 self.title = ""
+                self.imgUrl = nil
                 return
             }
         
@@ -44,7 +42,7 @@ struct FlickrImage {
         self.secret = secret
         self.server = server
         self.title = title
-        
+        self.imgUrl = "https://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret).jpg"
     }
     
 }
