@@ -11,7 +11,6 @@ import Foundation
 enum Route {
     case photos(tags: String)
     case photoInfo(photoId: String)
-    case userImg(iconFarm: Int, iconServer: String, nsid: String)
     
     // Path
     func method() -> String {
@@ -20,8 +19,6 @@ enum Route {
             return "flickr.photos.search"
         case .photoInfo:
             return "flickr.photos.getInfo"
-        case .userImg:
-            return ""
         }
     }
     // URL Parameters - query
@@ -43,8 +40,6 @@ enum Route {
                     "api_key": "0e2b6aaf8a6901c264acb91f151a3350",
                     "photo_id": photoId,
                     "nojsoncallback": "1"]
-        case .userImg:
-            return [:]
         }
     }
     
@@ -52,8 +47,7 @@ enum Route {
         switch self {
         case .photos, .photoInfo:
             return "https://api.flickr.com/services/rest/"
-        case let .userImg(iconFarm, iconServer, nsid):
-            return "http://farm\(iconFarm).staticflickr.com/\(iconServer)/buddyicons/\(nsid).jpg"
+        
         }
     }
     
