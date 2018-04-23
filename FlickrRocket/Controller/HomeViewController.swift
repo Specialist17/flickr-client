@@ -106,8 +106,4 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
         return CustomAnimationController()
     }
     
-    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return CustomDismissAnimationController()
-//    }
 }

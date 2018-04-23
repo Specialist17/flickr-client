@@ -21,8 +21,8 @@ enum Route {
             return "flickr.photos.getInfo"
         }
     }
-    // URL Parameters - query
     
+    // URL Parameters - query
     func urlParameters() -> [String: String] {
         switch self {
         case let .photos(tags):
@@ -43,7 +43,8 @@ enum Route {
         }
     }
     
-    func baseURl() -> String {
+    // Base URL
+    func baseURL() -> String {
         switch self {
         case .photos, .photoInfo:
             return "https://api.flickr.com/services/rest/"
@@ -52,7 +53,6 @@ enum Route {
     }
     
     // Headers
-    
     func headers() -> [String: String] {
         return [:]
     }

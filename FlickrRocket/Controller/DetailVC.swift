@@ -38,7 +38,13 @@ class DetailVC: UIViewController {
             DispatchQueue.main.async {
                 self.authorNameLabel.text = ownerUsername
                 self.photoTitleLabel.text = photoTitleContent
-                self.authorImageView.loadImageFromUrlString(urlString: "http://farm\(ownerFarm).staticflickr.com/\(ownerSever)/buddyicons/\(ownerId).jpg")
+                var urlString = ""
+                if ownerFarm > 0 {
+                    urlString = "http://farm\(ownerFarm).staticflickr.com/\(ownerSever)/buddyicons/\(ownerId).jpg"
+                } else {
+                    urlString = "https://www.flickr.com/images/buddyicon.gif"
+                }
+                self.authorImageView.loadImageFromUrlString(urlString: urlString)
             }
         }
     }

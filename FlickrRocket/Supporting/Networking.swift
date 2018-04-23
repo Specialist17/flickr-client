@@ -14,10 +14,10 @@ class Networking {
     let session = URLSession.shared
     
     func fetch(route: Route, completion: @escaping (Data) -> Void) {
-        let baseUrl = route.baseURl()
+        let baseUrl = route.baseURL()
         var toURL = URL(string: baseUrl)!
         toURL = toURL.appendingQueryParameters(_parametersDictionary: route.urlParameters())
-        var request = URLRequest(url: toURL)
+        let request = URLRequest(url: toURL)
         
         session.dataTask(with: request) { (data, response, error) in
             

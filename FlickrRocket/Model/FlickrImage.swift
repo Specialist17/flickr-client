@@ -26,7 +26,7 @@ struct FlickrImage {
             let server = photoObj["server"] as? String,
             let title = photoObj["title"] as? String
             else {
-                self.farm = 9
+                self.farm = 0
                 self.id = ""
                 self.owner = ""
                 self.secret = ""
