@@ -14,14 +14,18 @@ class DetailVC: UIViewController {
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var photoTitleLabel: UILabel!
-    var imageUrl: String?
+    var flickrItem: FlickrImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let imageUrl = imageUrl {
+        if let imageUrl = flickrItem.imgUrl {
              flickrDetailImageView.loadImageFromUrlString(urlString: imageUrl)
         }
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
 

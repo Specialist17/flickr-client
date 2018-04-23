@@ -18,6 +18,8 @@
 		901892D4208C27ED0016F77B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892D3208C27ED0016F77B /* CustomImageView.swift */; };
 		901892D6208C33270016F77B /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901892D5208C33270016F77B /* DetailVC.swift */; };
 		901A3EC2208CE1FF00F2B1DE /* CustomAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3EC1208CE1FF00F2B1DE /* CustomAnimationController.swift */; };
+		90ABF252208D5D0E00C7AA76 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABF251208D5D0E00C7AA76 /* Route.swift */; };
+		90ABF255208D637D00C7AA76 /* Url+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABF254208D637D00C7AA76 /* Url+Parameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		901892D3208C27ED0016F77B /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		901892D5208C33270016F77B /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		901A3EC1208CE1FF00F2B1DE /* CustomAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationController.swift; sourceTree = "<group>"; };
+		90ABF251208D5D0E00C7AA76 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		90ABF254208D637D00C7AA76 /* Url+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Url+Parameters.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 			children = (
 				901892CC208B9EAF0016F77B /* Networking.swift */,
 				901892D3208C27ED0016F77B /* CustomImageView.swift */,
+				90ABF251208D5D0E00C7AA76 /* Route.swift */,
+				90ABF254208D637D00C7AA76 /* Url+Parameters.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -185,6 +191,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90ABF252208D5D0E00C7AA76 /* Route.swift in Sources */,
+				90ABF255208D637D00C7AA76 /* Url+Parameters.swift in Sources */,
 				901892B5208B9BC80016F77B /* HomeViewController.swift in Sources */,
 				901892CD208B9EAF0016F77B /* Networking.swift in Sources */,
 				901892B3208B9BC80016F77B /* AppDelegate.swift in Sources */,

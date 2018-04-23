@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         
-        networking.fetch(route: .me) { (data) in
+        networking.fetch(route: .photos(tags: "cars")) { (data) in
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
             
             guard let flickrJson = json as? NSDictionary,
@@ -61,8 +61,8 @@ class HomeViewController: UIViewController {
         if segue.identifier == "flickrImageDetail" {
             if let destinationVC = segue.destination as? DetailVC{
                 destinationVC.transitioningDelegate = self
-                if let image = sender as? FlickrImage {
-                    destinationVC.imageUrl = image.imgUrl!
+                if let flickerItem = sender as? FlickrImage {
+                    destinationVC.flickrItem = flickerItem
                 }
             }
         }
