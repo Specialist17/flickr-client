@@ -23,16 +23,12 @@ class HomeViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.estimatedItemSize = CGSize(width: view.bounds.size.width - (view.bounds.size.width*0.1), height: 300)
-//        }
-        
         activityIndicator.frame = view.bounds
         activityIndicator.color = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         
-        networking.fetch(route: .photos(tags: "cars")) { (data) in
+        networking.fetch(route: .photos(tags: "rocket")) { (data) in
             let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
             
             guard let flickrJson = json as? NSDictionary,
