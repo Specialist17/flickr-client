@@ -22,6 +22,21 @@ class DetailVC: UIViewController {
              flickrDetailImageView.loadImageFromUrlString(urlString: imageUrl)
         }
         
+        Networking.instance.fetch(route: .photoInfo(photoId: flickrItem.id)) { (data) in
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] else {return}
+            
+            guard let photoInfo = json!["photo"] as? [String:Any],
+                let photoTitle = photoInfo["title"] as? [String:Any],
+                let photoTitleContent = photoTitle["_content"] as? String,
+                let ownerInfo = photoInfo["owner"] as? [String: Any],
+                let ownerUsername = ownerInfo["username"] as? String else {return}
+            
+            DispatchQueue.main.async {
+                self.authorNameLabel.text = ownerUsername
+                self.photoTitleLabel.text = photoTitleContent
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

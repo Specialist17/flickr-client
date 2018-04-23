@@ -35,13 +35,14 @@ enum Route {
                     "tags": tags,
                     "tag_mode": "all",
                     "api_key": "0e2b6aaf8a6901c264acb91f151a3350",
-                    "nojsoncallback": "1",]
+                    "nojsoncallback": "1"]
         case let .photoInfo(photoId):
             return ["format": "json",
                     "sort": "random",
-                    "method": method(),
+                    "method": "flickr.photos.getInfo",
                     "api_key": "0e2b6aaf8a6901c264acb91f151a3350",
-                    "photo_id": photoId,]
+                    "photo_id": photoId,
+                    "nojsoncallback": "1"]
         case .userImg:
             return [:]
         }

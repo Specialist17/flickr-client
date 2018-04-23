@@ -19,12 +19,9 @@ class Networking {
         toURL = toURL.appendingQueryParameters(_parametersDictionary: route.urlParameters())
         var request = URLRequest(url: toURL)
         
-        request.allHTTPHeaderFields = route.headers()
-        
         session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                return
-            }
+            
+            guard let data = data else {return}
             
             completion(data)
         }.resume()
